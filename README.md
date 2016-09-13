@@ -6,4 +6,4 @@ for rapid development of maintainable high performance protocol servers & client
 you can learn more in [Netty:Home](http://netty.io/)  
 
 ##Simple
-I will try me best make kiko simple to use.
+Still developing... I will try my best make kiko simple to use.
