@@ -1,5 +1,6 @@
 package com.kiko.netty;
 
+import com.kiko.demo.ServerHandler;
 import com.kiko.tools.LogUtils;
 import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelOption;
@@ -47,6 +48,8 @@ public class Server {
 
     public static void main(String[] args) {
         HandlerInitializer hi = new HandlerInitializer();
+        ServerHandler handler = new ServerHandler();
+        hi.addLastHandler(handler);
         Server s = new Server(hi);
         s.bind(6006);
     }

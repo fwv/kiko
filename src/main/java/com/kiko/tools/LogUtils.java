@@ -1,7 +1,8 @@
 package com.kiko.tools;
 
-import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * @Author fengwei
@@ -14,8 +15,9 @@ public class LogUtils {
     public static Logger log = null;
 
     static {
-        property.configure("log4j.properties");
-        log = Logger.getLogger(LogUtils.class.getName());
+        //System.setProperty("log4j.configuration", "log4j.properties");
+        //property.configure("log4j.properties");
+        log = LoggerFactory.getLogger(LogUtils.class.getName());
     }
 
     public static void main(String[] args) {

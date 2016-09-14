@@ -19,6 +19,13 @@ public class ServerInitializer {
 
     private HandlerInitializer handlerInitializer;
 
+    public ServerInitializer(EventLoopGroup bossGroup, EventLoopGroup wokerGroup,
+                             HandlerInitializer initializer) {
+        this.bossGroup = bossGroup;
+        this.wokerGroup = wokerGroup;
+        this.handlerInitializer = initializer;
+    }
+
     public void init() {
         bootstrap = new ServerBootstrap();
         bootstrap.group(bossGroup, wokerGroup);
@@ -28,13 +35,6 @@ public class ServerInitializer {
 
     public <T> void setChannelOption(ChannelOption<T> key, T val) {
         bootstrap.option(key, val);
-    }
-
-    public ServerInitializer(EventLoopGroup bossGroup, EventLoopGroup wokerGroup,
-                             HandlerInitializer initializer) {
-        this.bossGroup = bossGroup;
-        this.wokerGroup = wokerGroup;
-        this.handlerInitializer = initializer;
     }
 
     public HandlerInitializer getHandlerInitializer() {
