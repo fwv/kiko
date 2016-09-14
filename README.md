@@ -6,4 +6,8 @@ for rapid development of maintainable high performance protocol servers & client
 you can learn more in [Netty:Home](http://netty.io/)  
 
 ##Simple
-Still developing... I will try my best make kiko simple to use.
+Still developing... I will try my best make kiko simple to use.  
+
+##Landmark
+*2016/09/13 I suddenly began to make kiko.
+*2016/09/14 kiko has netty c/s and slf4j log4j(I found StackOverFlower is a wonderful place lol...)
