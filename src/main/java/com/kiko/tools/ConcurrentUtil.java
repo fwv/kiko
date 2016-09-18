@@ -1,5 +1,7 @@
 package com.kiko.tools;
 
+import jdk.nashorn.internal.codegen.CompilerConstants;
+
 import java.util.concurrent.*;
 
 /**
@@ -22,43 +24,72 @@ public class ConcurrentUtil {
     }
 
     public static void run(Runnable runnable) {
-       Future f =  scheduledExecutorService.scheduleAtFixedRate(runnable, 0, 1, TimeUnit.SECONDS);
+       future =  scheduledExecutorService.scheduleAtFixedRate(runnable, 0, 1, TimeUnit.SECONDS);
+//        try {
+//            Thread.sleep(3000);
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        }
+        //future.cancel(true);
+    }
+
+    public static void callableRun(Callable c) {
+        FutureTask ft = new FutureTask(c);
+        Future f =  scheduledExecutorService.scheduleAtFixedRate(ft, 0, 1, TimeUnit.SECONDS);
         try {
             Thread.sleep(3000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        f.cancel(true);
+       // f.cancel(true);
     }
 
+
     public static void main(String[] args) {
-        ScheduledExecutorService es = Executors.newScheduledThreadPool(1);
-        Runnable runnable = new Runnable() {
-            /**
-             *
-             */
+
+//        Callable c = new Callable() {
+//            public Integer call() {
+//                int i = 0;
+//                    if (!Thread.currentThread().isInterrupted()) {
+//                        LogUtils.log.info("running : i = " + ++i);
+//                    }
+//                return i;
+//            }
+//        };
+        Runnable r = new Runnable() {
+            volatile int i = 0;
             public void run() {
-                int i = 0;
-                while (true) {
-                    if (!Thread.currentThread().isInterrupted()) {
-                        LogUtils.log.info("running : i = " + ++i);
-                    }
+                LogUtils.log.info("running : i = " + ++i);
+                if (i > 5) {
                     try {
-                        Thread.sleep(1000);
-                    } catch (InterruptedException e) {
+                        throw new Exception("my exception");
+                    } catch (Exception e) {
                         e.printStackTrace();
-                        //Thread.currentThread().interrupt();
                     }
                 }
             }
         };
-        ScheduledFuture f = es.scheduleAtFixedRate(runnable, 0, 1, TimeUnit.SECONDS);
+        ConcurrentUtil.run(r);
         try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
+            ConcurrentUtil.future.get();
+        } catch (Exception e) {
             e.printStackTrace();
+            ConcurrentUtil.future.cancel(true);
         }
-        f.cancel(true);
+//        try {
+//            Thread.sleep(3000);
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        }
+//        ConcurrentUtil.future.cancel(true);
+
+//        Runnable r1 = new Runnable() {
+//            public void run() {
+//                LogUtils.log.info("new task is running");
+//            }
+//        };
+//        ConcurrentUtil.run(r1);
+
     }
 
 
