@@ -1,4 +1,4 @@
-package com.kiko.netty;
+package com.kiko.netty.impl;
 
 import com.kiko.tools.ConditionUtils;
 import io.netty.channel.ChannelHandler;
@@ -27,7 +27,7 @@ public class HandlerInitializer extends ChannelInitializer<SocketChannel>{
         }
     }
 
-    protected void addLastHandler(ChannelHandler handler) {
+    public void addLastHandler(ChannelHandler handler) {
         handlers.add(handler);
         handlerCnt++;
     }

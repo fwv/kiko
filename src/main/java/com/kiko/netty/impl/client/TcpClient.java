@@ -1,6 +1,8 @@
-package com.kiko.netty;
+package com.kiko.netty.impl.client;
 
 import com.kiko.demo.CleintHandler;
+import com.kiko.netty.NetUnit;
+import com.kiko.netty.impl.HandlerInitializer;
 import com.kiko.tools.LogUtils;
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.ChannelFuture;
@@ -12,26 +14,30 @@ import io.netty.channel.nio.NioEventLoopGroup;
  * @Author fengwei
  * Created on 2016/9/14/0014.
  */
-public class Client {
-
-    private HandlerInitializer handlerInitializer;
-
-    private ClientInitializer clientInitializerl;
+public class TcpClient extends NetUnit{
 
     private EventLoopGroup workerGroup;
 
-    public Client(HandlerInitializer handlerInitializer) {
+    private HandlerInitializer handlerInitializer;
+
+    private TcpClientInitializer tcpClientInitializerl;
+
+    public TcpClient(HandlerInitializer handlerInitializer) {
         this.handlerInitializer = handlerInitializer;
         this.workerGroup = new NioEventLoopGroup();
-        this.clientInitializerl = new ClientInitializer(workerGroup, handlerInitializer);
+        this.tcpClientInitializerl = new TcpClientInitializer(workerGroup, handlerInitializer);
     }
 
-    public void connect(String host, Integer port) {
+    @Override
+    public void boot(Integer port) {}
+
+    @Override
+    public void boot(String host, Integer port) {
         LogUtils.log.info("client is connecting server with ip : " + host + " on port : " + port);
         try {
-            clientInitializerl.init();
-            clientInitializerl.setChannelOption(ChannelOption.TCP_NODELAY, true);
-            Bootstrap b = clientInitializerl.getBootstrap();
+            tcpClientInitializerl.init();
+            tcpClientInitializerl.setChannelOption(ChannelOption.TCP_NODELAY, true);
+            Bootstrap b = tcpClientInitializerl.getBootstrap();
             ChannelFuture future = b.connect(host, port).sync();
             future.channel().closeFuture().sync();
         } catch (InterruptedException e) {
@@ -45,7 +51,8 @@ public class Client {
         HandlerInitializer init = new HandlerInitializer();
         CleintHandler handler = new CleintHandler();
         init.addLastHandler(handler);
-        Client client = new Client(init);
-        client.connect("127.0.0.1", 6006);
+        TcpClient tcpClient = new TcpClient(init);
+        tcpClient.boot("127.0.0.1", 6006);
     }
+
 }

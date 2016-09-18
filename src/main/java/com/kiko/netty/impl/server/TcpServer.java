@@ -1,6 +1,8 @@
-package com.kiko.netty;
+package com.kiko.netty.impl.server;
 
 import com.kiko.demo.ServerHandler;
+import com.kiko.netty.NetUnit;
+import com.kiko.netty.impl.HandlerInitializer;
 import com.kiko.tools.LogUtils;
 import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelOption;
@@ -11,32 +13,33 @@ import io.netty.channel.nio.NioEventLoopGroup;
  * @Author fengwei
  * Created on 2016/9/13/0013.
  */
-public class Server {
+public class TcpServer extends NetUnit{
 
-    private ServerInitializer serverInitializer;
-
-    private HandlerInitializer handlerInitializer;
+    private Integer port;
 
     private EventLoopGroup bossGroup;
 
     private EventLoopGroup workerGroup;
 
-    private Integer port;
+    private HandlerInitializer handlerInitializer;
 
-    public Server(HandlerInitializer handlerInitializer) {
+    private TcpServerInitializer tcpServerInitializer;
+
+    public TcpServer(HandlerInitializer handlerInitializer) {
         bossGroup = new NioEventLoopGroup();
         workerGroup = new NioEventLoopGroup();
         this.handlerInitializer = handlerInitializer;
-        this.serverInitializer = new ServerInitializer(bossGroup, workerGroup, handlerInitializer);
+        this.tcpServerInitializer = new TcpServerInitializer(bossGroup, workerGroup, handlerInitializer);
     }
 
-    public void bind(Integer port) {
+    @Override
+    public void boot(Integer port) {
         try {
             LogUtils.log.info("server is bind on port : " + port);
             this.port = port;
-            serverInitializer.init();
-            serverInitializer.setChannelOption(ChannelOption.SO_BACKLOG, 1024);
-            ChannelFuture future = serverInitializer.getBootstrap().bind(port).sync();
+            tcpServerInitializer.init();
+            tcpServerInitializer.setChannelOption(ChannelOption.SO_BACKLOG, 1024);
+            ChannelFuture future = tcpServerInitializer.getBootstrap().bind(port).sync();
             future.channel().closeFuture().sync();
         } catch (InterruptedException e) {
             e.printStackTrace();
@@ -46,12 +49,16 @@ public class Server {
         }
     }
 
+    @Override
+    public void boot(String host, Integer port) {
+        boot(port);
+    }
+
     public static void main(String[] args) {
         HandlerInitializer hi = new HandlerInitializer();
         ServerHandler handler = new ServerHandler();
         hi.addLastHandler(handler);
-        Server s = new Server(hi);
-        s.bind(6006);
+        TcpServer s = new TcpServer(hi);
+        s.boot(6006);
     }
-
 }

@@ -8,5 +8,4 @@ public abstract class Module {
 
     public abstract void init();
 
-
 }
