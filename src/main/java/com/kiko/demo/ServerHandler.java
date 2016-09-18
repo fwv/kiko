@@ -2,6 +2,7 @@ package com.kiko.demo;
 
 import com.kiko.tools.LogUtils;
 import io.netty.buffer.ByteBuf;
+import io.netty.buffer.Unpooled;
 import io.netty.channel.ChannelHandler;
 import io.netty.channel.ChannelHandlerAdapter;
 import io.netty.channel.ChannelHandlerContext;
@@ -25,6 +26,12 @@ public class ServerHandler extends ChannelHandlerAdapter{
             buff.readBytes(bytes);
             String str = new String(bytes);
             LogUtils.log.info("server received : {}", str);
+
+            String resp = "echo : " + str;
+            byte[] respBytes = resp.getBytes();
+            ByteBuf respBuf = Unpooled.buffer(respBytes.length);
+            respBuf.writeBytes(respBytes);
+            ctx.writeAndFlush(respBuf);
         }
     }
 

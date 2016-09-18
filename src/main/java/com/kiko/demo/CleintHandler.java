@@ -15,7 +15,11 @@ public class CleintHandler extends ChannelHandlerAdapter {
 
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
-        super.channelRead(ctx, msg);
+        ByteBuf buff = (ByteBuf) msg;
+        byte[] bytes = new byte[buff.readableBytes()];
+        buff.readBytes(bytes);
+        String str = new String (bytes);
+        LogUtils.log.info(str);
     }
 
     @Override
