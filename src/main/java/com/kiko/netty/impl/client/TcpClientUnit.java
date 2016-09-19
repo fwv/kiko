@@ -2,7 +2,7 @@ package com.kiko.netty.impl.client;
 
 import com.kiko.demo.CleintHandler;
 import com.kiko.netty.NetUnit;
-import com.kiko.netty.impl.HandlerInitializer;
+import com.kiko.netty.impl.HandlersInitializer;
 import com.kiko.tools.LogUtils;
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.ChannelFuture;
@@ -14,18 +14,21 @@ import io.netty.channel.nio.NioEventLoopGroup;
  * @Author fengwei
  * Created on 2016/9/14/0014.
  */
-public class TcpClient extends NetUnit{
+public class TcpClientUnit extends NetUnit{
 
     private EventLoopGroup workerGroup;
 
-    private HandlerInitializer handlerInitializer;
-
     private TcpClientInitializer tcpClientInitializerl;
 
-    public TcpClient(HandlerInitializer handlerInitializer) {
-        this.handlerInitializer = handlerInitializer;
+    public TcpClientUnit() {
         this.workerGroup = new NioEventLoopGroup();
-        this.tcpClientInitializerl = new TcpClientInitializer(workerGroup, handlerInitializer);
+        this.tcpClientInitializerl = new TcpClientInitializer(workerGroup);
+    }
+
+    @Override
+    public void init(HandlersInitializer handlersInitializer) {
+        tcpClientInitializerl.init(handlersInitializer);
+        tcpClientInitializerl.setChannelOption(ChannelOption.TCP_NODELAY, true);
     }
 
     @Override
@@ -35,10 +38,7 @@ public class TcpClient extends NetUnit{
     public void boot(String host, Integer port) {
         LogUtils.log.info("client is connecting server with ip : " + host + " on port : " + port);
         try {
-            tcpClientInitializerl.init();
-            tcpClientInitializerl.setChannelOption(ChannelOption.TCP_NODELAY, true);
-            Bootstrap b = tcpClientInitializerl.getBootstrap();
-            ChannelFuture future = b.connect(host, port).sync();
+            ChannelFuture future = tcpClientInitializerl.getBootstrap().connect(host, port).sync();
             future.channel().closeFuture().sync();
         } catch (InterruptedException e) {
             e.printStackTrace();
@@ -48,11 +48,12 @@ public class TcpClient extends NetUnit{
     }
 
     public static void main(String[] args) {
-        HandlerInitializer init = new HandlerInitializer();
+        HandlersInitializer init = new HandlersInitializer();
         CleintHandler handler = new CleintHandler();
         init.addLastHandler(handler);
-        TcpClient tcpClient = new TcpClient(init);
-        tcpClient.boot("127.0.0.1", 6006);
+        TcpClientUnit tcpClientUnit = new TcpClientUnit();
+        tcpClientUnit.init(init);
+        tcpClientUnit.boot("127.0.0.1", 6006);
     }
 
 }

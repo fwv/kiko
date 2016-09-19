@@ -1,5 +1,6 @@
 package com.kiko.module;
 
+import com.kiko.core.NetObject;
 import com.kiko.tools.ConditionUtils;
 
 import java.util.Collection;
@@ -17,5 +18,7 @@ public abstract class AbstractModuleManager {
     public abstract Module findModule();
 
     public boolean hasRemainModule() {return ConditionUtils.isEmpty(modules);}
+
+    public abstract void load(NetObject owner);
 
 }

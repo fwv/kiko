@@ -12,7 +12,7 @@ import java.util.Iterator;
  * @Author fengwei
  * Created on 2016/9/13/0013.
  */
-public class HandlerInitializer extends ChannelInitializer<SocketChannel>{
+public class HandlersInitializer extends ChannelInitializer<SocketChannel>{
 
     ArrayList<ChannelHandler> handlers = new ArrayList<ChannelHandler>();
 

@@ -1,6 +1,7 @@
 package com.kiko.netty.impl.client;
 
 import com.kiko.netty.NetUnitInitializer;
+import com.kiko.netty.impl.HandlersInitializer;
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.ChannelOption;
 import io.netty.channel.EventLoopGroup;
@@ -36,19 +37,17 @@ public class TcpClientInitializer extends NetUnitInitializer{
     /**
      * constructor
      * @param workerGroup
-     * @param handlerInitializer
      */
-    public TcpClientInitializer(EventLoopGroup workerGroup, com.kiko.netty.impl.HandlerInitializer handlerInitializer) {
+    public TcpClientInitializer(EventLoopGroup workerGroup) {
         this.workerGroup = workerGroup;
-        this.handlerInitializer = handlerInitializer;
     }
 
     @Override
-    public void init() {
-        this.bootstrap = new Bootstrap();
+    public void init(HandlersInitializer handlersInitializer) {
+        bootstrap = new Bootstrap();
         bootstrap.group(workerGroup);
         bootstrap.channel(NioSocketChannel.class);
-        bootstrap.handler(handlerInitializer);
+        bootstrap.handler(null != handlersInitializer ? handlersInitializer : new HandlersInitializer());
     }
 
     public <T> void setChannelOption(ChannelOption<T> key, T val) {bootstrap.option(key, val);}

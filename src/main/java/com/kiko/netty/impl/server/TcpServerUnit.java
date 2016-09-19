@@ -2,7 +2,7 @@ package com.kiko.netty.impl.server;
 
 import com.kiko.demo.ServerHandler;
 import com.kiko.netty.NetUnit;
-import com.kiko.netty.impl.HandlerInitializer;
+import com.kiko.netty.impl.HandlersInitializer;
 import com.kiko.tools.LogUtils;
 import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelOption;
@@ -13,32 +13,30 @@ import io.netty.channel.nio.NioEventLoopGroup;
  * @Author fengwei
  * Created on 2016/9/13/0013.
  */
-public class TcpServer extends NetUnit{
-
-    private Integer port;
+public class TcpServerUnit extends NetUnit{
 
     private EventLoopGroup bossGroup;
 
     private EventLoopGroup workerGroup;
 
-    private HandlerInitializer handlerInitializer;
-
     private TcpServerInitializer tcpServerInitializer;
 
-    public TcpServer(HandlerInitializer handlerInitializer) {
+    public TcpServerUnit() {
         bossGroup = new NioEventLoopGroup();
         workerGroup = new NioEventLoopGroup();
-        this.handlerInitializer = handlerInitializer;
-        this.tcpServerInitializer = new TcpServerInitializer(bossGroup, workerGroup, handlerInitializer);
+        this.tcpServerInitializer = new TcpServerInitializer(bossGroup, workerGroup);
+    }
+
+    @Override
+    public void init(HandlersInitializer handlersInitializer) {
+        tcpServerInitializer.init(handlersInitializer);
+        tcpServerInitializer.setChannelOption(ChannelOption.SO_BACKLOG, 1024);
     }
 
     @Override
     public void boot(Integer port) {
         try {
             LogUtils.log.info("server is bind on port : " + port);
-            this.port = port;
-            tcpServerInitializer.init();
-            tcpServerInitializer.setChannelOption(ChannelOption.SO_BACKLOG, 1024);
             ChannelFuture future = tcpServerInitializer.getBootstrap().bind(port).sync();
             future.channel().closeFuture().sync();
         } catch (InterruptedException e) {
@@ -55,10 +53,11 @@ public class TcpServer extends NetUnit{
     }
 
     public static void main(String[] args) {
-        HandlerInitializer hi = new HandlerInitializer();
+        HandlersInitializer hi = new HandlersInitializer();
         ServerHandler handler = new ServerHandler();
         hi.addLastHandler(handler);
-        TcpServer s = new TcpServer(hi);
+        TcpServerUnit s = new TcpServerUnit();
+        s.init(hi);
         s.boot(6006);
     }
 }
