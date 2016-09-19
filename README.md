@@ -11,4 +11,4 @@ Still developing... I will try my best make kiko simple to use.
 ##Landmark  
 * 2016/09/13 I suddenly began to make kiko.
 * 2016/09/14 kiko has netty c/s and slf4j log4j( I found StackOverFlower is a wonderful place!!! )
-* 2016/09/19 completed the frist vision framework of kiko (core object, service module, db module, event module)
+* 2016/09/19 completed the first vision framework of kiko (core object, service module, db module, event module)
