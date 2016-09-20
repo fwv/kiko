@@ -1,6 +1,7 @@
 package com.kiko.netty;
 
 import com.kiko.netty.impl.HandlersInitializer;
+import com.kiko.netty.impl.NetUnitOption;
 
 /**
  * @Author fengwei
@@ -14,4 +15,6 @@ public abstract class NetUnit {
     public abstract void boot(Integer port);
 
     public abstract void boot(String host, Integer port);
+
+    public abstract void setOption(NetUnitOption option);
 }

@@ -11,14 +11,18 @@ import java.util.Collection;
  */
 public abstract class AbstractModuleManager {
 
-    private Collection<Module> modules;
+    protected Collection<Module> modules;
 
-    public abstract void addModule();
+    public NetObject leaderNetObj;
 
     public abstract Module findModule();
 
+    public AbstractModuleManager(NetObject owner) {
+        this.leaderNetObj = owner;
+    }
+
     public boolean hasRemainModule() {return ConditionUtils.isEmpty(modules);}
 
-    public abstract void load(NetObject owner);
+    public abstract void loadModule(Module module);
 
 }
