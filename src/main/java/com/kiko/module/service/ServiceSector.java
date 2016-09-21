@@ -22,8 +22,8 @@ public class ServiceSector extends Sector<ChannelHandlerAdapter> implements Prod
     public void init() {
     }
 
-    public ChannelHandlerAdapter produce() {
-        return handlerAdapter;
+    public ServiceProduct produce(ChannelHandlerAdapter handlerAdapter) {
+        return new ServiceProduct(handlerAdapter);
     }
 
 }

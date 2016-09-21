@@ -3,6 +3,7 @@ package com.kiko.netty.impl.server;
 import com.kiko.demo.ServerHandler;
 import com.kiko.netty.NetUnit;
 import com.kiko.netty.impl.HandlersInitializer;
+import com.kiko.netty.impl.NetUnitOption;
 import com.kiko.tools.LogUtils;
 import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelOption;
@@ -50,6 +51,11 @@ public class TcpServerUnit extends NetUnit{
     @Override
     public void boot(String host, Integer port) {
         boot(port);
+    }
+
+    @Override
+    public void setOption(NetUnitOption option) {
+
     }
 
     public static void main(String[] args) {
