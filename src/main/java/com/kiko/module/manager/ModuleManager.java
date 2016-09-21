@@ -36,15 +36,15 @@ public class ModuleManager extends AbstractModuleManager{
     @Override
     public void InstallAllModules() {
         if (ConditionUtils.isEmpty(modules))return;
-        // ����ģ��
+        // 遍历模块
         for (Iterator<Module> mit = modules.iterator() ; mit.hasNext(); ) {
             Module module = mit.next();
-            // ������
+            // 遍历区
             for (Iterator<Sector> sit = module.sectors.iterator() ; sit.hasNext(); ) {
                 Sector sector = sit.next();
-                // ��������
+                // 生产配置
                 NetUnitOption option= sector.produce();
-                // װ������
+                // 装载配置
                 leaderNetObj.netUnit.setOption(option);
             }
         }
