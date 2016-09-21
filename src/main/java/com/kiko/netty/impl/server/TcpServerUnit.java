@@ -7,6 +7,7 @@ import com.kiko.netty.impl.HandlersInitializer;
 import com.kiko.netty.impl.NetUnitOption;
 import com.kiko.tools.LogUtils;
 import io.netty.channel.ChannelFuture;
+import io.netty.channel.ChannelHandlerAdapter;
 import io.netty.channel.ChannelOption;
 import io.netty.channel.EventLoopGroup;
 import io.netty.channel.nio.NioEventLoopGroup;
@@ -26,11 +27,12 @@ public class TcpServerUnit extends NetUnit{
     public TcpServerUnit() {
         bossGroup = new NioEventLoopGroup();
         workerGroup = new NioEventLoopGroup();
-        this.tcpServerInitializer = new TcpServerInitializer(bossGroup, workerGroup);
+        handlersInitializer = new HandlersInitializer();
+        tcpServerInitializer = new TcpServerInitializer(bossGroup, workerGroup);
     }
 
     @Override
-    public void init(HandlersInitializer handlersInitializer) {
+    public void init() {
         tcpServerInitializer.init(handlersInitializer);
         tcpServerInitializer.setChannelOption(ChannelOption.SO_BACKLOG, 1024);
     }
@@ -61,16 +63,16 @@ public class TcpServerUnit extends NetUnit{
     @Override
     public void setOption(NetUnitOption option) {
         if (option instanceof ServiceProduct) {
-
+            ChannelHandlerAdapter handler = (ChannelHandlerAdapter)option.getOption();
+            handlersInitializer.addLastHandler(handler);
         }
     }
 
     public static void main(String[] args) {
-        HandlersInitializer hi = new HandlersInitializer();
-        ServerHandler handler = new ServerHandler();
-        hi.addLastHandler(handler);
         TcpServerUnit s = new TcpServerUnit();
-        s.init(hi);
+        ServerHandler handler = new ServerHandler();
+        s.handlersInitializer.addLastHandler(handler);
+        s.init();
         s.boot(6006);
     }
 }

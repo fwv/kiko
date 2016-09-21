@@ -3,6 +3,7 @@ package com.kiko.netty.impl.client;
 import com.kiko.demo.CleintHandler;
 import com.kiko.netty.NetUnit;
 import com.kiko.netty.impl.HandlersInitializer;
+import com.kiko.netty.impl.NetUnitOption;
 import com.kiko.tools.LogUtils;
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.ChannelFuture;
@@ -21,12 +22,13 @@ public class TcpClientUnit extends NetUnit{
     private TcpClientInitializer tcpClientInitializerl;
 
     public TcpClientUnit() {
-        this.workerGroup = new NioEventLoopGroup();
-        this.tcpClientInitializerl = new TcpClientInitializer(workerGroup);
+        workerGroup = new NioEventLoopGroup();
+        tcpClientInitializerl = new TcpClientInitializer(workerGroup);
+        handlersInitializer = new HandlersInitializer();
     }
 
     @Override
-    public void init(HandlersInitializer handlersInitializer) {
+    public void init() {
         tcpClientInitializerl.init(handlersInitializer);
         tcpClientInitializerl.setChannelOption(ChannelOption.TCP_NODELAY, true);
     }
@@ -47,12 +49,16 @@ public class TcpClientUnit extends NetUnit{
         }
     }
 
+    @Override
+    protected void setOption(NetUnitOption option) {
+
+    }
+
     public static void main(String[] args) {
-        HandlersInitializer init = new HandlersInitializer();
-        CleintHandler handler = new CleintHandler();
-        init.addLastHandler(handler);
         TcpClientUnit tcpClientUnit = new TcpClientUnit();
-        tcpClientUnit.init(init);
+        CleintHandler handler = new CleintHandler();
+        tcpClientUnit.handlersInitializer.addLastHandler(handler);
+        tcpClientUnit.init();
         tcpClientUnit.boot("127.0.0.1", 6006);
     }
 

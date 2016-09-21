@@ -10,7 +10,9 @@ import com.kiko.netty.impl.NetUnitOption;
  */
 public abstract class NetUnit {
 
-    public abstract void init(HandlersInitializer handlersInitializer);
+    protected HandlersInitializer handlersInitializer;
+
+    protected abstract void init();
 
     public abstract void boot(Integer port);
 

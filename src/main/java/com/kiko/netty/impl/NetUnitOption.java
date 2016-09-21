@@ -11,6 +11,6 @@ public abstract class NetUnitOption<E> {
         this.option = e;
     };
 
-    protected abstract Object getOption();
+    public abstract Object getOption();
 
 }

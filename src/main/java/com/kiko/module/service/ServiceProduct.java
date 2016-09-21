@@ -14,7 +14,7 @@ public class ServiceProduct extends NetUnitOption<ChannelHandlerAdapter>{
     }
 
     @Override
-    protected Object getOption() {
+    public Object getOption() {
         return option;
     }
 
