@@ -10,8 +10,8 @@ import com.kiko.netty.NetUnit;
  */
 public abstract class AbstractClient extends NetObject{
 
-    private String host;
+    protected String host;
 
-    private int port;
+    protected int port;
 
 }

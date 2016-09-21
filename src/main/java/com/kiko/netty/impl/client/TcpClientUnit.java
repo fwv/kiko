@@ -1,12 +1,13 @@
 package com.kiko.netty.impl.client;
 
-import com.kiko.demo.CleintHandler;
+import com.kiko.demo.handler.ClientHandler;
+import com.kiko.module.service.ServiceProduct;
 import com.kiko.netty.NetUnit;
 import com.kiko.netty.impl.HandlersInitializer;
 import com.kiko.netty.impl.NetUnitOption;
 import com.kiko.tools.LogUtils;
-import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.ChannelFuture;
+import io.netty.channel.ChannelHandlerAdapter;
 import io.netty.channel.ChannelOption;
 import io.netty.channel.EventLoopGroup;
 import io.netty.channel.nio.NioEventLoopGroup;
@@ -51,11 +52,15 @@ public class TcpClientUnit extends NetUnit{
 
     @Override
     public void setOption(NetUnitOption option) {
+        if (option instanceof ServiceProduct) {
+            ChannelHandlerAdapter handler = (ChannelHandlerAdapter)option.getOption();
+            handlersInitializer.addLastHandler(handler);
+        }
     }
 
     public static void main(String[] args) {
         TcpClientUnit tcpClientUnit = new TcpClientUnit();
-        CleintHandler handler = new CleintHandler();
+        ClientHandler handler = new ClientHandler();
         tcpClientUnit.handlersInitializer.addLastHandler(handler);
         tcpClientUnit.init();
         tcpClientUnit.boot("127.0.0.1", 6006);

@@ -1,6 +1,6 @@
 package com.kiko.netty.impl.server;
 
-import com.kiko.demo.ServerHandler;
+import com.kiko.demo.handler.ServerHandler;
 import com.kiko.module.service.ServiceProduct;
 import com.kiko.netty.NetUnit;
 import com.kiko.netty.impl.HandlersInitializer;

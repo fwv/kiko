@@ -1,4 +1,4 @@
-package com.kiko.demo;
+package com.kiko.demo.handler;
 
 import com.kiko.tools.LogUtils;
 import io.netty.buffer.ByteBuf;
@@ -11,7 +11,7 @@ import io.netty.channel.ChannelHandlerContext;
  * @Author fengwei
  * Created on 2016/9/14/0014.
  */
-public class CleintHandler extends ChannelHandlerAdapter {
+public class ClientHandler extends ChannelHandlerAdapter {
 
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {

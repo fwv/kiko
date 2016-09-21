@@ -1,7 +1,7 @@
 package com.kiko.core.server.impl;
 
 import com.kiko.core.server.AbstractServer;
-import com.kiko.demo.ServerHandler;
+import com.kiko.demo.handler.ServerHandler;
 import com.kiko.module.manager.ModuleManager;
 import com.kiko.module.service.ServiceModule;
 import com.kiko.module.service.ServiceSector;
@@ -24,16 +24,6 @@ public class TcpServer extends AbstractServer{
         moduleManager.installAllModules();
         netUnit.init();
         netUnit.boot(port);
-    }
-
-    public static void main(String[] args) {
-        TcpServer server = new TcpServer(6006);
-        ServiceModule module = new ServiceModule(server.moduleManager);
-        ServerHandler handler = new ServerHandler();
-        ServiceSector sector = new ServiceSector(module, handler);
-        module.loadSector(sector);
-        server.moduleManager.loadModule(module);
-        server.start();
     }
 
 }

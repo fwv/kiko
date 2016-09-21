@@ -1,4 +1,4 @@
-package com.kiko.demo;
+package com.kiko.demo.handler;
 
 import com.kiko.tools.LogUtils;
 import io.netty.buffer.ByteBuf;
