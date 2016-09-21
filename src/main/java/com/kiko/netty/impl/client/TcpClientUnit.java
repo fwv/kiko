@@ -50,8 +50,7 @@ public class TcpClientUnit extends NetUnit{
     }
 
     @Override
-    protected void setOption(NetUnitOption option) {
-
+    public void setOption(NetUnitOption option) {
     }
 
     public static void main(String[] args) {

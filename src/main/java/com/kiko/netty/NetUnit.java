@@ -12,7 +12,7 @@ public abstract class NetUnit {
 
     protected HandlersInitializer handlersInitializer;
 
-    protected abstract void init();
+    public abstract void init();
 
     public abstract void boot(Integer port);
 

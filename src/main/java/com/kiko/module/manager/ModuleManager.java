@@ -29,12 +29,12 @@ public class ModuleManager extends AbstractModuleManager{
 
     @Override
     public void loadModule(Module module) {
-        if (!ConditionUtils.isEmpty(modules))
+        if (null != modules)
         modules.add(module);
     }
 
     @Override
-    public void InstallAllModules() {
+    public void installAllModules() {
         if (ConditionUtils.isEmpty(modules))return;
         // 遍历模块
         for (Iterator<Module> mit = modules.iterator() ; mit.hasNext(); ) {

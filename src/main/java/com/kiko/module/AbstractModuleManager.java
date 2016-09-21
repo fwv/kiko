@@ -25,6 +25,6 @@ public abstract class AbstractModuleManager {
 
     public abstract void loadModule(Module module);
 
-    public abstract void InstallAllModules();
+    public abstract void installAllModules();
 
 }
