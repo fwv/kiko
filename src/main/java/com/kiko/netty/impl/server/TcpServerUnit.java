@@ -1,6 +1,7 @@
 package com.kiko.netty.impl.server;
 
 import com.kiko.demo.ServerHandler;
+import com.kiko.module.service.ServiceProduct;
 import com.kiko.netty.NetUnit;
 import com.kiko.netty.impl.HandlersInitializer;
 import com.kiko.netty.impl.NetUnitOption;
@@ -53,9 +54,15 @@ public class TcpServerUnit extends NetUnit{
         boot(port);
     }
 
+    /**
+     * …Ë÷√ Ù–‘
+     * @param option
+     */
     @Override
     public void setOption(NetUnitOption option) {
+        if (option instanceof ServiceProduct) {
 
+        }
     }
 
     public static void main(String[] args) {
