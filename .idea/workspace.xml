@@ -47,8 +47,8 @@
       <file leaf-file-name="ModuleManager.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/kiko/module/manager/ModuleManager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.50884354">
-              <caret line="43" column="43" selection-start-line="43" selection-start-column="43" selection-end-line="43" selection-end-column="43" />
+            <state vertical-scroll-proportion="0.5510204">
+              <caret line="45" column="51" selection-start-line="45" selection-start-column="51" selection-end-line="45" selection-end-column="51" />
               <folding />
             </state>
           </provider>
@@ -868,7 +868,7 @@
   <component name="PropertiesComponent">
     <property name="aspect.path.notification.shown" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
+    <property name="settings.editor.selected.configurable" value="File.Encoding" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
@@ -1266,12 +1266,12 @@
       <workItem from="1474164855541" duration="24464000" />
       <workItem from="1474249518951" duration="3064000" />
       <workItem from="1474252604585" duration="27777000" />
-      <workItem from="1474422939347" duration="11249000" />
+      <workItem from="1474422939347" duration="11458000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="97332000" />
+    <option name="totallyTimeSpent" value="97541000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1678,8 +1678,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/kiko/module/manager/ModuleManager.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.50884354">
-          <caret line="43" column="43" selection-start-line="43" selection-start-column="43" selection-end-line="43" selection-end-column="43" />
+        <state vertical-scroll-proportion="0.5510204">
+          <caret line="45" column="51" selection-start-line="45" selection-start-column="51" selection-end-line="45" selection-end-column="51" />
           <folding />
         </state>
       </provider>
