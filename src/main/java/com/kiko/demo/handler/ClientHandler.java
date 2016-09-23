@@ -3,6 +3,7 @@ package com.kiko.demo.handler;
 import com.kiko.tools.LogUtils;
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
+import io.netty.channel.ChannelHandler;
 import io.netty.channel.ChannelHandlerAdapter;
 import io.netty.channel.ChannelHandlerContext;
 
@@ -11,6 +12,7 @@ import io.netty.channel.ChannelHandlerContext;
  * @Author fengwei
  * Created on 2016/9/14/0014.
  */
+@ChannelHandler.Sharable
 public class ClientHandler extends ChannelHandlerAdapter {
 
     @Override

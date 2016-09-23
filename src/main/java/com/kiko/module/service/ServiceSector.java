@@ -1,9 +1,7 @@
 package com.kiko.module.service;
 
 import com.kiko.module.Module;
-import com.kiko.module.Producer;
 import com.kiko.module.Sector;
-import com.kiko.netty.impl.NetUnitOption;
 import io.netty.channel.ChannelHandlerAdapter;
 
 /**
