@@ -1,7 +1,7 @@
 package com.kiko.module.event;
 
 import com.kiko.module.AbstractModuleManager;
-import com.kiko.module.MODULE_TYPE;
+import com.kiko.module.ModuleType;
 import com.kiko.module.Module;
 import com.kiko.module.Sector;
 
@@ -13,7 +13,7 @@ public class EventModule extends Module{
 
     public EventModule(AbstractModuleManager owner) {
         super(owner);
-        type = MODULE_TYPE.EVENT;
+        type = ModuleType.EVENT;
     }
 
     @Override

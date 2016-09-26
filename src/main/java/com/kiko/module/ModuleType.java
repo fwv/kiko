@@ -4,7 +4,7 @@ package com.kiko.module;
  * @Author fengwei
  * Created on 2016/9/20/0020.
  */
-public enum MODULE_TYPE {
+public enum ModuleType {
 
     EVENT("eventModule", 1),
     SERVICE("serviceModule", 2),
@@ -13,7 +13,7 @@ public enum MODULE_TYPE {
     private String name;
     private Integer index;
 
-    private MODULE_TYPE(String name, Integer index) {
+    private ModuleType(String name, Integer index) {
         this.name = name;
         this.index = index;
     }

@@ -1,7 +1,6 @@
 package com.kiko.module;
 
 import java.util.Collection;
-import java.util.List;
 
 /**
  * @Author fengwei
@@ -9,7 +8,7 @@ import java.util.List;
  */
 public abstract class Module {
 
-    protected MODULE_TYPE type;
+    protected ModuleType type;
 
     public Collection<Sector> sectors;
 

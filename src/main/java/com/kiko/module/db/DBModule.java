@@ -1,7 +1,7 @@
 package com.kiko.module.db;
 
 import com.kiko.module.AbstractModuleManager;
-import com.kiko.module.MODULE_TYPE;
+import com.kiko.module.ModuleType;
 import com.kiko.module.Module;
 import com.kiko.module.Sector;
 
@@ -13,7 +13,7 @@ public class DBModule extends Module{
 
     public DBModule(AbstractModuleManager owner) {
         super(owner);
-        type = MODULE_TYPE.DB;
+        type = ModuleType.DB;
     }
 
     @Override

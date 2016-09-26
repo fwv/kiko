@@ -1,7 +1,7 @@
 package com.kiko.module.service;
 
 import com.kiko.module.AbstractModuleManager;
-import com.kiko.module.MODULE_TYPE;
+import com.kiko.module.ModuleType;
 import com.kiko.module.Module;
 import com.kiko.module.Sector;
 
@@ -16,7 +16,7 @@ public class ServiceModule extends Module{
     public ServiceModule(AbstractModuleManager owner) {
         super(owner);
         sectors = new CopyOnWriteArrayList<Sector>();
-        type = MODULE_TYPE.SERVICE;
+        type = ModuleType.SERVICE;
     }
 
     @Override
