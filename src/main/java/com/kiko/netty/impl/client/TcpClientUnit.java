@@ -52,7 +52,7 @@ public class TcpClientUnit extends NetUnit{
         } catch (InterruptedException e) {
             e.printStackTrace();
         } finally {
-             workerGroup.shutdownGracefully();
+             //workerGroup.shutdownGracefully();
             // 处理断线重连
             try {
                 Thread.sleep(5000);
@@ -61,6 +61,7 @@ public class TcpClientUnit extends NetUnit{
             }
             LogUtils.log.info("server disconnect, begin reconnect!");
             Runnable reChatTask = ()->{
+                //init();
                 boot(host, port);
             };
             executor.execute(reChatTask);
