@@ -14,7 +14,11 @@ public class message implements Serializable{
 
     public String  name = "fw";
 
-    //public String  i;
+    public String  i;
+
+    public long kk = 1L;
+
+    public int j = 2;
 
     //public person p;
 

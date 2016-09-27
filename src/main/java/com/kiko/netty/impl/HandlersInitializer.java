@@ -29,7 +29,7 @@ public class HandlersInitializer extends ChannelInitializer<SocketChannel>{
     protected void initChannel(SocketChannel ch) throws Exception {
        // addLastHandler(new LengthFieldBasedFrameDecoder(65535, 0, 2));
         //addLastHandler(new LengthFieldPrepender(65535));
-        ch.pipeline().addLast(new LengthFieldBasedFrameDecoder(65535, 0, 2));
+        //ch.pipeline().addLast(new LengthFieldBasedFrameDecoder(65535, 0, 2));
         ch.pipeline().addLast(new ObjectDecoder(1024, ClassResolvers.weakCachingConcurrentResolver(message.class.getClassLoader())));
         ch.pipeline().addLast(new ObjectEncoder());
         if (!ConditionUtils.isEmpty(handlers)) {

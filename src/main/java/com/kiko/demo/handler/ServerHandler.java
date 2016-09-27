@@ -17,6 +17,7 @@ import java.nio.ByteBuffer;
  * @Author fengwei
  * Created on 2016/9/14/0014.
  */
+@ChannelHandler.Sharable
 public class ServerHandler extends ChannelHandlerAdapter{
 
     @Override
