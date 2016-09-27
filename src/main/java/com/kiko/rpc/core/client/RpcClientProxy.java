@@ -24,7 +24,7 @@ public class RpcClientProxy implements InvocationHandler{
         request.setParams(args);
 
         // 发送请求
-        // ....
+        //
 
         return null;
     }

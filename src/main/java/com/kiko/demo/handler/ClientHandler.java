@@ -1,5 +1,7 @@
 package com.kiko.demo.handler;
 
+import com.kiko.demo.object.message;
+import com.kiko.demo.object.person;
 import com.kiko.tools.LogUtils;
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
@@ -32,11 +34,17 @@ public class ClientHandler extends ChannelHandlerAdapter {
     @Override
     public void channelActive(ChannelHandlerContext ctx) throws Exception {
         LogUtils.log.info("client handler is active !");
-        String str = new String("Hello, kiko!");
+       /* String str = new String("Hello, kiko!");
         byte[] bytes = str.getBytes();
         ByteBuf buffer = Unpooled.buffer(bytes.length);
         buffer.writeBytes(bytes);
-        ctx.writeAndFlush(buffer);
+        ctx.writeAndFlush(buffer);*/
+        message msg = new message();
+        msg.str = "serializable!";
+        person p = new person();
+        p.name = "fw";
+        msg.p = p;
+        ctx.writeAndFlush(msg);
     }
 
     @Override

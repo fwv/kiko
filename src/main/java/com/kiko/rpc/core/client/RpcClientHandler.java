@@ -1,7 +1,13 @@
 package com.kiko.rpc.core.client;
 
+import com.kiko.rpc.event.RpcRequest;
+import com.kiko.rpc.event.RpcResponse;
+import com.kiko.rpc.util.RpcCallback;
 import io.netty.channel.ChannelHandlerAdapter;
 import io.netty.channel.ChannelHandlerContext;
+
+import javax.security.auth.callback.Callback;
+import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * @Author fengwei
@@ -12,7 +18,7 @@ public class RpcClientHandler extends ChannelHandlerAdapter{
 
     public static ChannelHandlerContext ctx;
 
-
+    public ConcurrentHashMap<String, RpcCallback> rpcCallbackCache = new ConcurrentHashMap<String, RpcCallback>();
 
     @Override
     public void channelActive(ChannelHandlerContext ctx) throws Exception {
@@ -22,7 +28,9 @@ public class RpcClientHandler extends ChannelHandlerAdapter{
 
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
-        super.channelRead(ctx, msg);
+        RpcResponse response = (RpcResponse)msg;
+        RpcCallback callback = rpcCallbackCache.get(response.getId());
+        callback.onWrite(response);
     }
 
     @Override
@@ -33,6 +41,13 @@ public class RpcClientHandler extends ChannelHandlerAdapter{
     @Override
     public void userEventTriggered(ChannelHandlerContext ctx, Object evt) throws Exception {
         super.userEventTriggered(ctx, evt);
+    }
+
+    public RpcCallback sendRpcRequest(RpcRequest request) {
+        RpcCallback callback = new RpcCallback(request);
+        rpcCallbackCache.put(request.getId(), callback);
+        ctx.writeAndFlush(request);
+        return callback;
     }
 
 }

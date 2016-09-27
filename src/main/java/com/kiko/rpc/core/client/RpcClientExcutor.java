@@ -9,8 +9,11 @@ import java.lang.reflect.Proxy;
  */
 public class RpcClientExcutor {
 
+
     public <T> T execute(Class<T> rpcInterface) {
         return (T) Proxy.newProxyInstance(rpcInterface.getClassLoader(),
                 rpcInterface.getInterfaces(), new RpcClientProxy());
     }
+
+
 }

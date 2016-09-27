@@ -1,5 +1,6 @@
 package com.kiko.demo.handler;
 
+import com.kiko.demo.object.message;
 import com.kiko.tools.LogUtils;
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
@@ -21,7 +22,7 @@ public class ServerHandler extends ChannelHandlerAdapter{
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
         if (null != msg) {
-            ByteBuf buff = (ByteBuf) msg;
+           /* ByteBuf buff = (ByteBuf) msg;
             byte[] bytes = new byte[buff.readableBytes()];
             buff.readBytes(bytes);
             String str = new String(bytes);
@@ -31,7 +32,9 @@ public class ServerHandler extends ChannelHandlerAdapter{
             byte[] respBytes = resp.getBytes();
             ByteBuf respBuf = Unpooled.buffer(respBytes.length);
             respBuf.writeBytes(respBytes);
-            ctx.writeAndFlush(respBuf);
+            ctx.writeAndFlush(respBuf);*/
+            message m = (message)msg;
+            LogUtils.log.info(m.str + " : " +m.name);
         }
     }
 

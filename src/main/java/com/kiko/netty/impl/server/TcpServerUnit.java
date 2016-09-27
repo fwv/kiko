@@ -31,6 +31,10 @@ public class TcpServerUnit extends NetUnit{
         tcpServerInitializer = new TcpServerInitializer(bossGroup, workerGroup);
     }
 
+    public TcpServerUnit(HandlersInitializer protocolInitializer) {
+        handlersInitializer = (null != protocolInitializer) ? protocolInitializer : new HandlersInitializer();
+    }
+
     @Override
     public void init() {
         tcpServerInitializer.init(handlersInitializer);
@@ -57,7 +61,7 @@ public class TcpServerUnit extends NetUnit{
     }
 
     /**
-     * ÉèÖÃÊôÐÔ
+     * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
      * @param option
      */
     @Override
