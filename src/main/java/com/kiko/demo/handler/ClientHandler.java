@@ -40,7 +40,10 @@ public class ClientHandler extends ChannelHandlerAdapter {
         buffer.writeBytes(bytes);
         ctx.writeAndFlush(buffer);*/
         message msg = new message();
-        msg.str = "serializable!";
+        //msg.str = "serializable!";
+        person p = new person();
+        p.name = "fw";
+        msg.p = p;
         ctx.writeAndFlush(msg);
     }
 

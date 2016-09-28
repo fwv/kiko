@@ -1,6 +1,9 @@
 package com.kiko.rpc.core.client;
 
 import com.kiko.rpc.event.RpcRequest;
+import com.kiko.rpc.event.RpcResponse;
+import com.kiko.rpc.util.RpcCallback;
+import io.netty.channel.ChannelHandler;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
@@ -13,6 +16,8 @@ import java.util.UUID;
  */
 public class RpcClientProxy implements InvocationHandler{
 
+    public RpcClientHandler sendHandler;
+
     @Override
     public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
         // 组装请求
@@ -24,9 +29,10 @@ public class RpcClientProxy implements InvocationHandler{
         request.setParams(args);
 
         // 发送请求
-        //
+        RpcCallback callback = sendHandler.sendRpcRequest(request);
+        RpcResponse response = callback.getResult();
 
-        return null;
+        return response.getAttach();
     }
 
 }

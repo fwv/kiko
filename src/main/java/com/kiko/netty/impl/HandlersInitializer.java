@@ -25,13 +25,14 @@ public class HandlersInitializer extends ChannelInitializer<SocketChannel>{
 
     private Integer handlerCnt = 0;
 
+    protected SocketChannel channel;
+
     @Override
     protected void initChannel(SocketChannel ch) throws Exception {
-       // addLastHandler(new LengthFieldBasedFrameDecoder(65535, 0, 2));
-        //addLastHandler(new LengthFieldPrepender(65535));
-        //ch.pipeline().addLast(new LengthFieldBasedFrameDecoder(65535, 0, 2));
-        ch.pipeline().addLast(new ObjectDecoder(1024, ClassResolvers.weakCachingConcurrentResolver(message.class.getClassLoader())));
+        ch.pipeline().addLast(new LengthFieldBasedFrameDecoder(65535, 0, 2));
+        ch.pipeline().addLast(new ObjectDecoder(1024, ClassResolvers.weakCachingConcurrentResolver(this.getClass().getClassLoader())));
         ch.pipeline().addLast(new ObjectEncoder());
+        //channel = ch;
         if (!ConditionUtils.isEmpty(handlers)) {
             for (Iterator<ChannelHandler>it = handlers.iterator();it.hasNext(); ) {
                 ch.pipeline().addLast(it.next());

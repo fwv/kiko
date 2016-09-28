@@ -54,4 +54,8 @@ public class RpcCallback {
         latch.countDown();
     }
 
+    public RpcResponse getResult() {
+        return response;
+    }
+
 }

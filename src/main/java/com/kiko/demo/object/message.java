@@ -10,23 +10,10 @@ public class message implements Serializable{
 
     private static final long serialVersionUID = 1L;
 
-    public String str;
+    public Integer age = 1;
 
-    public String  name = "fw";
+    public person p;
 
-    public String  i;
+    public String s = "ss";
 
-    public long kk = 1L;
-
-    public int j = 2;
-
-    //public person p;
-
-/*    public String getStr() {
-        return str;
-    }
-
-    public void setStr(String str) {
-        this.str = str;
-    }*/
 }

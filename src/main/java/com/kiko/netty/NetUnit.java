@@ -19,4 +19,8 @@ public abstract class NetUnit {
     public abstract void boot(String host, Integer port);
 
     public abstract void setOption(NetUnitOption option);
+
+    public void applyProtocol(HandlersInitializer protocol) {
+        handlersInitializer = protocol;
+    }
 }

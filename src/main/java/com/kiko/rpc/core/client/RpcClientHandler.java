@@ -3,6 +3,8 @@ package com.kiko.rpc.core.client;
 import com.kiko.rpc.event.RpcRequest;
 import com.kiko.rpc.event.RpcResponse;
 import com.kiko.rpc.util.RpcCallback;
+import com.kiko.tools.LogUtils;
+import io.netty.channel.ChannelHandler;
 import io.netty.channel.ChannelHandlerAdapter;
 import io.netty.channel.ChannelHandlerContext;
 
@@ -14,6 +16,7 @@ import java.util.concurrent.ConcurrentHashMap;
  * Created on 2016/9/27/0027.
  * Rpc客户端Handler，负责收发消息
  */
+@ChannelHandler.Sharable
 public class RpcClientHandler extends ChannelHandlerAdapter{
 
     public static ChannelHandlerContext ctx;
@@ -22,8 +25,9 @@ public class RpcClientHandler extends ChannelHandlerAdapter{
 
     @Override
     public void channelActive(ChannelHandlerContext ctx) throws Exception {
-        this.ctx = ctx;
         super.channelActive(ctx);
+        LogUtils.log.info("connect completely");
+        this.ctx = ctx;
     }
 
     @Override
