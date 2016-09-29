@@ -29,9 +29,7 @@ public class RpcClientProxy implements InvocationHandler{
         request.setParams(args);
 
         // 发送请求
-        RpcCallback callback = sendHandler.sendRpcRequest(request);
-        RpcResponse response = callback.getResult();
-
+        RpcResponse response = sendHandler.sendRpcRequest(request);
         return response.getAttach();
     }
 

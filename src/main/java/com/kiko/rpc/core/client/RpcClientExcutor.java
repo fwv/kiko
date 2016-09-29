@@ -12,8 +12,7 @@ public class RpcClientExcutor {
     public RpcClientProxy proxy = new RpcClientProxy();
 
     public <T> T execute(Class<T> rpcInterface) {
-        return (T) Proxy.newProxyInstance(rpcInterface.getClassLoader(),
-                rpcInterface.getInterfaces(), proxy);
+        return (T) Proxy.newProxyInstance(rpcInterface.getClassLoader(),new Class<?>[]{rpcInterface}, proxy);
     }
 
 }

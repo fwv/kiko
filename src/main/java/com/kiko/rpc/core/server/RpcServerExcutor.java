@@ -12,7 +12,7 @@ import java.util.concurrent.Future;
  */
 public class RpcServerExcutor {
 
-    public static ExecutorService rpcExecutor = Executors.newFixedThreadPool(8, new NamedThreadFactory());
+    public static ExecutorService rpcExecutor = Executors.newFixedThreadPool(8);
 
     public static Future submit(RpcServerExecutorTask task) {
         return rpcExecutor.submit(task);

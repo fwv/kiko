@@ -1,6 +1,6 @@
 package com.kiko.rpc.core.register;
 
-import com.kiko.rpc.service.impl.upperCaseShow;
+import com.kiko.rpc.service.impl.upperCaseShowImpl;
 
 /**
  * @Author fengwei
@@ -10,6 +10,6 @@ import com.kiko.rpc.service.impl.upperCaseShow;
 public class RegisterManager {
 
     public static Object getRegisterObj() {
-        return new upperCaseShow();
+        return new upperCaseShowImpl();
     }
 }

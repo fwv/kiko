@@ -17,11 +17,11 @@ public class RpcCallback {
 
     private RpcResponse response;
 
-    private ReentrantLock lock;
+    private ReentrantLock lock = new ReentrantLock();
 
     public CountDownLatch latch = new CountDownLatch(1);
 
-    public int TIME_OUT_SECOND = 5;
+    public int TIME_OUT_SECOND = 500;
 
     public RpcCallback(RpcRequest request, int timeout) {
         this.request = request;
@@ -33,7 +33,7 @@ public class RpcCallback {
     }
 
     public RpcResponse onProcess() throws InterruptedException {
-        lock.lock();
+        //lock.lock();
         if (null == response) {
             new Thread(()->{
                 try {
@@ -45,7 +45,7 @@ public class RpcCallback {
             }).start();
             latch.await();
         }
-        lock.unlock();
+        //lock.unlock();
         return response;
     }
 

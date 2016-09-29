@@ -18,7 +18,7 @@ public class rpcClient {
 
         Runnable task = () ->{
             try {
-                Thread.sleep(3000);
+                Thread.sleep(1000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
@@ -26,8 +26,10 @@ public class rpcClient {
             String result = us.doUpperCase("kiko, you have rpc!");
             LogUtils.log.info(result);
         };
-        new Thread(task).start();
-
+        for (int i = 0; i < 100; i++) {
+            new Thread(task).start();
+        }
+        LogUtils.log.info("start conect!");
         client.start("127.0.0.1", 8000);
 
     }

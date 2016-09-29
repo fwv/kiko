@@ -47,11 +47,11 @@ public class RpcClientHandler extends ChannelHandlerAdapter{
         super.userEventTriggered(ctx, evt);
     }
 
-    public RpcCallback sendRpcRequest(RpcRequest request) {
+    public RpcResponse sendRpcRequest(RpcRequest request) throws InterruptedException {
         RpcCallback callback = new RpcCallback(request);
         rpcCallbackCache.put(request.getId(), callback);
         ctx.writeAndFlush(request);
-        return callback;
+        return callback.onProcess();
     }
 
 }
