@@ -9,7 +9,8 @@ you can learn more in [Netty:Home](http://netty.io/)
 Still developing... I will try my best make kiko simple to use.  
 
 ##Landmark  
-* 2016/09/13 I suddenly began to make kiko.
-* 2016/09/14 kiko has netty c/s and slf4j log4j( I found StackOverFlower is a wonderful place!!! )
-* 2016/09/19 completed the first vision framework of kiko (core object, service module, db module, event module)
+* 2016/09/13 Began to do this thing.
+* 2016/09/14 kiko has netty c/s and slf4j log4j. (I found StackOverFlower is a wonderful place)
+* 2016/09/19 completed the first vision framework of kiko. (core object, service module, db module, event module)
 * 2016/09/21 service module can work correctlly.
+* 2016/09/29 kiko has its own RPC frame, currently only supports java native Serializable. 
