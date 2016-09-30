@@ -11,9 +11,10 @@ public class RpcResponse extends AbstractRpcEvent{
 
     private Object attach;
 
-    public String getResult() {
-        return result;
-    }
+    private Exception exception;
+
+
+    public String getResult() { return result; }
 
     public void setResult(String result) {
         this.result = result;
@@ -25,5 +26,13 @@ public class RpcResponse extends AbstractRpcEvent{
 
     public void setAttach(Object attach) {
         this.attach = attach;
+    }
+
+    public Exception getException() {
+        return exception;
+    }
+
+    public void setException(Exception exception) {
+        this.exception = exception;
     }
 }

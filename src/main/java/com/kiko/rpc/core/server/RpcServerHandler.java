@@ -16,6 +16,7 @@ import java.util.concurrent.Future;
  */
 @ChannelHandler.Sharable
 public class RpcServerHandler extends ChannelHandlerAdapter{
+
     @Override
     public void channelActive(ChannelHandlerContext ctx) throws Exception {
         super.channelActive(ctx);
@@ -31,12 +32,12 @@ public class RpcServerHandler extends ChannelHandlerAdapter{
             @Override
             public void onSuccess(RpcResponse o) {
                 ctx.writeAndFlush(o);
-                LogUtils.log.info("kiko Rpc Success : send RpcResponse completely");
+                LogUtils.log.info("kiko Rpc Success : send RpcResponse completely!");
             }
 
             @Override
             public void onFailed() {
-                LogUtils.log.error("kiko Rpc Failed : time out");
+                LogUtils.log.error("kiko Rpc Failed : AsynFuture error!");
             }
         });
     }

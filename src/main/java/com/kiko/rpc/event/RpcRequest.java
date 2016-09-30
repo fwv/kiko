@@ -9,6 +9,8 @@ public class RpcRequest extends AbstractRpcEvent{
 
     private String className;
 
+    private String simpleClassName;
+
     private String methodName;
 
     private Class[] paramTypes;
@@ -45,5 +47,12 @@ public class RpcRequest extends AbstractRpcEvent{
 
     public void setParams(Object[] params) {
         this.params = params;
+    }
+
+
+    public String getSimpleClassName() { return simpleClassName; }
+
+    public void setSimpleClassName(String simpleClassName) {
+        this.simpleClassName = simpleClassName;
     }
 }
