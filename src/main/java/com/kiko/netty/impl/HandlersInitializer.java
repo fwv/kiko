@@ -1,15 +1,10 @@
 package com.kiko.netty.impl;
 
-import com.kiko.demo.object.message;
 import com.kiko.tools.ConditionUtils;
 import io.netty.channel.ChannelHandler;
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.socket.SocketChannel;
-import io.netty.handler.codec.LengthFieldBasedFrameDecoder;
-import io.netty.handler.codec.LengthFieldPrepender;
-import io.netty.handler.codec.serialization.ClassResolvers;
-import io.netty.handler.codec.serialization.ObjectDecoder;
-import io.netty.handler.codec.serialization.ObjectEncoder;
+
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -29,10 +24,7 @@ public class HandlersInitializer extends ChannelInitializer<SocketChannel>{
 
     @Override
     protected void initChannel(SocketChannel ch) throws Exception {
-        ch.pipeline().addLast(new LengthFieldBasedFrameDecoder(65535, 0, 2));
-        ch.pipeline().addLast(new ObjectDecoder(1024, ClassResolvers.weakCachingConcurrentResolver(this.getClass().getClassLoader())));
-        ch.pipeline().addLast(new ObjectEncoder());
-        //channel = ch;
+
         if (!ConditionUtils.isEmpty(handlers)) {
             for (Iterator<ChannelHandler>it = handlers.iterator();it.hasNext(); ) {
                 ch.pipeline().addLast(it.next());

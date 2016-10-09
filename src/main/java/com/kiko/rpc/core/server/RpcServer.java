@@ -1,5 +1,6 @@
 package com.kiko.rpc.core.server;
 
+import com.kiko.netty.impl.HandlersInitializer;
 import com.kiko.netty.impl.server.TcpServerUnit;
 import com.kiko.rpc.serialize.serializable.SerializableProtocol;
 
@@ -15,11 +16,16 @@ public class RpcServer {
     public TcpServerUnit serverUnit;
 
     public RpcServer() {
+        this(new SerializableProtocol());
+    }
+
+    public RpcServer(HandlersInitializer handlersInitializer) {
         rpcServerExcutor = new RpcServerExcutor();
-        SerializableProtocol protocol = new SerializableProtocol();
-        protocol.addLastHandler(new RpcServerHandler());
         serverUnit = new TcpServerUnit();
-        serverUnit.applyProtocol(protocol);
+
+        serverUnit.applyProtocol(handlersInitializer);
+
+        handlersInitializer.addLastHandler(new RpcServerHandler());
     }
 
     public void init() {serverUnit.init();}

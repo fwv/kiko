@@ -13,7 +13,6 @@ public class rpcClient {
 
     public static void main(String[] args) {
         RpcClient client = new RpcClient();
-        //rpcClient.client = client;
         client.init();
 
         Runnable task = () ->{
@@ -26,11 +25,10 @@ public class rpcClient {
             String result = us.doUpperCase("kiko, you have rpc!");
             LogUtils.log.info(result);
         };
-        for (int i = 0; i < 100; i++) {
+        for (int i = 0; i < 1000; i++) {
             new Thread(task).start();
         }
-        LogUtils.log.info("start conect!");
-        client.start("127.0.0.1", 8000);
 
+        client.start("127.0.0.1", 8000);
     }
 }

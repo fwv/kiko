@@ -1,5 +1,6 @@
 package com.kiko.rpc.core.client;
 
+import com.kiko.netty.impl.HandlersInitializer;
 import com.kiko.netty.impl.client.TcpClientUnit;
 import com.kiko.rpc.serialize.serializable.SerializableProtocol;
 
@@ -17,14 +18,20 @@ public class RpcClient {
     public RpcClientHandler handler;
 
     public RpcClient() {
+        // 默认使用java提供的原生serializable编解码框架
+        this(new SerializableProtocol());
+    }
+
+    public RpcClient(HandlersInitializer handlersInitializer) {
         rpcClientExcutor = new RpcClientExcutor();
-        SerializableProtocol protocol = new SerializableProtocol();
-
-        handler = new RpcClientHandler();
-        protocol.addLastHandler(handler);
-
         clientUnit = new TcpClientUnit();
-        clientUnit.applyProtocol(protocol);
+
+        // 选择使用何种rpc编解码框架
+        clientUnit.applyProtocol(handlersInitializer);
+
+        // 添加rpc客户端处理器
+        handler = new RpcClientHandler();
+        handlersInitializer.addLastHandler(handler);
     }
 
     public void init() {

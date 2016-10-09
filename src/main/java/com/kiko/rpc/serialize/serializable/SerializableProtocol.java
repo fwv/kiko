@@ -1,7 +1,9 @@
 package com.kiko.rpc.serialize.serializable;
 
 import com.kiko.netty.impl.HandlersInitializer;
+import com.kiko.rpc.core.client.RpcClientHandler;
 import com.kiko.rpc.serialize.RpcEventProtocol;
+import io.netty.channel.socket.SocketChannel;
 import io.netty.handler.codec.LengthFieldBasedFrameDecoder;
 import io.netty.handler.codec.serialization.ClassResolvers;
 import io.netty.handler.codec.serialization.ObjectDecoder;
@@ -14,9 +16,15 @@ import io.netty.handler.codec.serialization.ObjectEncoder;
 public class SerializableProtocol extends HandlersInitializer implements RpcEventProtocol{
 
     public SerializableProtocol() {
-       /* addLastHandler(new LengthFieldBasedFrameDecoder(65535, 0, 2));
-        addLastHandler(new ObjectDecoder(1024*1024, ClassResolvers.weakCachingConcurrentResolver(this.getClass().getClassLoader())));
-        addLastHandler(new ObjectEncoder());*/
+
+    }
+
+    @Override
+    protected void initChannel(SocketChannel ch) throws Exception {
+        ch.pipeline().addLast(new LengthFieldBasedFrameDecoder(65535, 0, 2));
+        ch.pipeline().addLast(new ObjectDecoder(1024, ClassResolvers.weakCachingConcurrentResolver(this.getClass().getClassLoader())));
+        ch.pipeline().addLast(new ObjectEncoder());
+        super.initChannel(ch);
     }
 
     @Override

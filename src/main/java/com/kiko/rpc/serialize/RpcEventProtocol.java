@@ -7,5 +7,5 @@ import com.kiko.netty.impl.HandlersInitializer;
  * Created on 2016/9/27/0027.
  */
 public interface RpcEventProtocol {
-    public  HandlersInitializer applyProtocol();
+    public HandlersInitializer applyProtocol();
 }

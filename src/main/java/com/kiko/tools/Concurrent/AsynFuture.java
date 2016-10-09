@@ -52,7 +52,6 @@ public class AsynFuture {
                 shutdown();
             }
         };
-
         executorService.submit(task);
     }
 
