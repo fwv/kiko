@@ -29,6 +29,6 @@ public class rpcClient {
             new Thread(task).start();
         }
 
-        client.start("127.0.0.1", 8000);
+        client.start("www.94fw.cn", 8000);
     }
 }

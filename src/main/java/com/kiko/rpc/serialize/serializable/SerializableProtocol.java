@@ -3,6 +3,7 @@ package com.kiko.rpc.serialize.serializable;
 import com.kiko.netty.impl.HandlersInitializer;
 import com.kiko.rpc.core.client.RpcClientHandler;
 import com.kiko.rpc.serialize.RpcEventProtocol;
+import com.kiko.tools.LogUtils;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.handler.codec.LengthFieldBasedFrameDecoder;
 import io.netty.handler.codec.serialization.ClassResolvers;
@@ -31,4 +32,5 @@ public class SerializableProtocol extends HandlersInitializer implements RpcEven
     public  HandlersInitializer applyProtocol() {
         return new SerializableProtocol();
     }
+
 }
