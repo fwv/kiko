@@ -1,4 +1,4 @@
-package com.kiko.rpc.serialize;
+package com.kiko.serialize;
 
 import com.kiko.netty.impl.HandlersInitializer;
 

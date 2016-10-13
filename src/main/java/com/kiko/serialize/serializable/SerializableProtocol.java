@@ -1,9 +1,7 @@
-package com.kiko.rpc.serialize.serializable;
+package com.kiko.serialize.serializable;
 
 import com.kiko.netty.impl.HandlersInitializer;
-import com.kiko.rpc.core.client.RpcClientHandler;
-import com.kiko.rpc.serialize.RpcEventProtocol;
-import com.kiko.tools.LogUtils;
+import com.kiko.serialize.RpcEventProtocol;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.handler.codec.LengthFieldBasedFrameDecoder;
 import io.netty.handler.codec.serialization.ClassResolvers;
