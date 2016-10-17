@@ -12,4 +12,8 @@ public class ConditionUtils {
         return null == collection || 0 == collection.size();
     }
 
+    public static boolean isEmpty(String str) {
+        return null == str || "".equals(str);
+    }
+
 }

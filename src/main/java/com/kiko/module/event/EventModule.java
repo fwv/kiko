@@ -18,7 +18,6 @@ public class EventModule extends Module{
 
     @Override
     public void init() {
-
     }
 
     @Override
