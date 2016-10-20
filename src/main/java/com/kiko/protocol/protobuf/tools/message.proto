@@ -1,0 +1,8 @@
+option java_package = "com.kiko.event.protobuf"; 
+option java_outer_classname = "MsgProtobuf"; 
+//kiko∂•≤„œ˚œ¢
+message KikoMsg
+{
+	optional int32 code = 1;
+	optional string desc = 2;
+}

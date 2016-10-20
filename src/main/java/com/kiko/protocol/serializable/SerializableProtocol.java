@@ -11,11 +11,11 @@ import io.netty.handler.codec.serialization.ObjectEncoder;
 /**
  * @Author fengwei
  * Created on 2016/9/27/0027.
+ * Java原生Serializable编解码器
  */
 public class SerializableProtocol extends HandlersInitializer implements RpcEventProtocol{
 
     public SerializableProtocol() {
-
     }
 
     @Override
