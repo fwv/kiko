@@ -1,7 +1,6 @@
 package com.kiko.netty.impl.client;
 
 import com.kiko.demo.handler.ClientHandler;
-import com.kiko.module.service.ServiceProduct;
 import com.kiko.netty.NetUnit;
 import com.kiko.netty.impl.HandlersInitializer;
 import com.kiko.netty.impl.NetUnitOption;
@@ -70,10 +69,6 @@ public class TcpClientUnit extends NetUnit{
 
     @Override
     public void setOption(NetUnitOption option) {
-        if (option instanceof ServiceProduct) {
-            ChannelHandlerAdapter handler = (ChannelHandlerAdapter)option.getOption();
-            handlersInitializer.addLastHandler(handler);
-        }
     }
 
     public static void main(String[] args) {

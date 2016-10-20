@@ -2,8 +2,6 @@ package com.kiko.demo.server;
 
 import com.kiko.core.server.impl.TcpServer;
 import com.kiko.demo.handler.ServerHandler;
-import com.kiko.module.service.ServiceModule;
-import com.kiko.module.service.ServiceSector;
 
 /**
  * @Author fengwei
@@ -13,12 +11,12 @@ public class tcpServer {
 
     public static void main(String[] args) {
         TcpServer server = new TcpServer(6006);
-        ServiceModule module = new ServiceModule(server.moduleManager);
-        ServerHandler handler = new ServerHandler();
-        ServiceSector sector = new ServiceSector(module, handler);
-        module.loadSector(sector);
-        server.moduleManager.loadModule(module);
-        server.start();
+//        ServiceModule module = new ServiceModule(server.moduleManager);
+//        ServerHandler handler = new ServerHandler();
+//        ServiceSector sector = new ServiceSector(module, handler);
+//        module.loadSector(sector);
+//        server.moduleManager.loadModule(module);
+//        server.start();
     }
 
 }

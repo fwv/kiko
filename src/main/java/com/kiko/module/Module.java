@@ -10,8 +10,6 @@ public abstract class Module {
 
     protected ModuleType type;
 
-    public Collection<Sector> sectors;
-
     public AbstractModuleManager leaderModuleManager;
 
     public Module(AbstractModuleManager owner) {
@@ -19,9 +17,5 @@ public abstract class Module {
     }
 
     public abstract void init();
-
-    public abstract void loadSector(Sector sector);
-
-    //public abstract void loadSectors(List<Sector> sectors);
 
 }

@@ -3,8 +3,6 @@ package com.kiko.module.manager;
 import com.kiko.core.NetObject;
 import com.kiko.module.AbstractModuleManager;
 import com.kiko.module.Module;
-import com.kiko.module.Sector;
-import com.kiko.module.service.ServiceSector;
 import com.kiko.netty.impl.NetUnitOption;
 import com.kiko.tools.ConditionUtils;
 
@@ -35,19 +33,19 @@ public class ModuleManager extends AbstractModuleManager{
 
     @Override
     public void installAllModules() {
-        if (ConditionUtils.isEmpty(modules))return;
-        // 遍历模块
-        for (Iterator<Module> mit = modules.iterator() ; mit.hasNext(); ) {
-            Module module = mit.next();
-            // 遍历区
-            for (Iterator<Sector> sit = module.sectors.iterator() ; sit.hasNext(); ) {
-                Sector sector = sit.next();
-                // 生产配置
-                NetUnitOption option= sector.produce();
-                // 装载配置
-                leaderNetObj.netUnit.setOption(option);
-            }
-        }
+//        if (ConditionUtils.isEmpty(modules))return;
+//        // 遍历模块
+//        for (Iterator<Module> mit = modules.iterator() ; mit.hasNext(); ) {
+//            Module module = mit.next();
+//            // 遍历区
+//            for (Iterator<Sector> sit = module.sectors.iterator() ; sit.hasNext(); ) {
+//                Sector sector = sit.next();
+//                // 生产配置
+//                NetUnitOption option= sector.produce();
+//                // 装载配置
+//                leaderNetObj.netUnit.setOption(option);
+//            }
+//        }
     }
 
 

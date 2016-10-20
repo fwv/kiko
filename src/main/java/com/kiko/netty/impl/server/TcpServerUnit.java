@@ -1,13 +1,11 @@
 package com.kiko.netty.impl.server;
 
 import com.kiko.demo.handler.ServerHandler;
-import com.kiko.module.service.ServiceProduct;
 import com.kiko.netty.NetUnit;
 import com.kiko.netty.impl.HandlersInitializer;
 import com.kiko.netty.impl.NetUnitOption;
 import com.kiko.tools.LogUtils;
 import io.netty.channel.ChannelFuture;
-import io.netty.channel.ChannelHandlerAdapter;
 import io.netty.channel.ChannelOption;
 import io.netty.channel.EventLoopGroup;
 import io.netty.channel.nio.NioEventLoopGroup;
@@ -56,16 +54,8 @@ public class TcpServerUnit extends NetUnit{
         boot(port);
     }
 
-    /**
-     * ��������
-     * @param option
-     */
     @Override
     public void setOption(NetUnitOption option) {
-        if (option instanceof ServiceProduct) {
-            ChannelHandlerAdapter handler = (ChannelHandlerAdapter)option.getOption();
-            handlersInitializer.addLastHandler(handler);
-        }
     }
 
     public static void main(String[] args) {
