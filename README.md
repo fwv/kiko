@@ -16,4 +16,4 @@ Still developing... I will try my best make kiko simple to use.
 * 2016/09/29 kiko has its own RPC frame(kiko-RPC), currently only supports java native Serializable. 
 * 2016/10/13 add MultiConsumerExecutor in concurrent tool.
 * 2016/10/20 some oop design like "Module Sector ModuleManager" make no sense so I delete them.
-* 2016/10/20 kiko protocol supports Google Protobuf.
+* 2016/10/20 kiko-protocol supports Google Protobuf.
