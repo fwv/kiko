@@ -2,7 +2,7 @@ package com.kiko.net.tcp;
 
 import com.kiko.netty.impl.HandlersInitializer;
 import com.kiko.netty.impl.server.TcpServerUnit;
-import com.kiko.serialize.SerializeFactory;
+import com.kiko.protocol.SerializeFactory;
 
 /**
  * @Author fengwei

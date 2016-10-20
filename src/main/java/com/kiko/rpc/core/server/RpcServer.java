@@ -2,7 +2,7 @@ package com.kiko.rpc.core.server;
 
 import com.kiko.netty.impl.HandlersInitializer;
 import com.kiko.netty.impl.server.TcpServerUnit;
-import com.kiko.serialize.serializable.SerializableProtocol;
+import com.kiko.protocol.serializable.SerializableProtocol;
 
 /**
  * @Author fengwei

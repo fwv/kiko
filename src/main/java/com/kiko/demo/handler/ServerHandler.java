@@ -41,7 +41,9 @@ public class ServerHandler extends ChannelHandlerAdapter{
 
     @Override
     public void channelActive(ChannelHandlerContext ctx) throws Exception {
-        LogUtils.log.info("server handler is active!");
+        LogUtils.log.info("channel is active! {}(remote) to-> {}(local)"
+                ,String.valueOf(ctx.channel().remoteAddress())
+                ,String.valueOf(ctx.channel().localAddress()));
     }
 
     @Override
@@ -53,4 +55,5 @@ public class ServerHandler extends ChannelHandlerAdapter{
     public void userEventTriggered(ChannelHandlerContext ctx, Object evt) throws Exception {
         super.userEventTriggered(ctx, evt);
     }
+
 }

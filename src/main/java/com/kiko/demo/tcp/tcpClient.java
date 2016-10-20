@@ -3,7 +3,7 @@ package com.kiko.demo.tcp;
 import com.kiko.demo.handler.ClientHandler;
 import com.kiko.net.tcp.TcpClient;
 import com.kiko.netty.impl.HandlersInitializer;
-import com.kiko.serialize.SerializeFactory;
+import com.kiko.protocol.SerializeFactory;
 
 /**
  * @Author fengwei
