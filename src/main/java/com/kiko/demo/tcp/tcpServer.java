@@ -1,6 +1,7 @@
 package com.kiko.demo.tcp;
 
 import com.kiko.demo.handler.ServerHandler;
+import com.kiko.demo.handler.protobuf.ProtobufServerHandler;
 import com.kiko.net.tcp.TcpServer;
 import com.kiko.netty.impl.HandlersInitializer;
 import com.kiko.protocol.SerializeFactory;
@@ -12,6 +13,25 @@ import com.kiko.protocol.SerializeFactory;
 public class tcpServer {
 
     public static void main(String[] args) {
+        //serializableServer();
+        protobufServer();
+    }
+
+    /**
+     * protobuf服务器
+     */
+    private static void protobufServer() {
+        TcpServer server = new TcpServer();
+        HandlersInitializer handlersInitializer = SerializeFactory.applyProtocol(SerializeFactory.SerializeType.PROTOBUF);
+        handlersInitializer.addLastHandler(new ProtobufServerHandler());
+        server.applyprotocol(handlersInitializer);
+        server.start(6000);
+    }
+
+    /**
+     * serializable服务器
+     */
+    private static void serializableServer() {
         TcpServer server = new TcpServer();
         HandlersInitializer handlersInitializer = SerializeFactory.applyProtocol(SerializeFactory.SerializeType.SERIALIZABLE);
         handlersInitializer.addLastHandler(new ServerHandler());

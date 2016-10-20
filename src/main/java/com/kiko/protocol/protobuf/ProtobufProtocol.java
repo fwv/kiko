@@ -4,7 +4,6 @@ import com.kiko.event.protobuf.MsgProtobuf;
 import com.kiko.netty.impl.HandlersInitializer;
 import com.kiko.protocol.RpcEventProtocol;
 import io.netty.channel.socket.SocketChannel;
-import io.netty.handler.codec.LengthFieldBasedFrameDecoder;
 import io.netty.handler.codec.protobuf.ProtobufDecoder;
 import io.netty.handler.codec.protobuf.ProtobufEncoder;
 import io.netty.handler.codec.protobuf.ProtobufVarint32FrameDecoder;
@@ -17,11 +16,10 @@ import io.netty.handler.codec.protobuf.ProtobufVarint32LengthFieldPrepender;
  */
 public class ProtobufProtocol extends HandlersInitializer implements RpcEventProtocol{
 
-    private ProtobufProtocol() {}
+    public ProtobufProtocol() {}
 
     @Override
     protected void initChannel(SocketChannel ch) throws Exception {
-        ch.pipeline().addLast(new LengthFieldBasedFrameDecoder(65535, 0, 2));
         ch.pipeline().addLast(new ProtobufVarint32FrameDecoder());
         ch.pipeline().addLast(new ProtobufDecoder(MsgProtobuf.KikoMsg.getDefaultInstance()));
         ch.pipeline().addLast(new ProtobufVarint32LengthFieldPrepender());
