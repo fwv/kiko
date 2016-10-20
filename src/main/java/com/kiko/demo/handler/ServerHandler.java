@@ -35,7 +35,6 @@ public class ServerHandler extends ChannelHandlerAdapter{
             respBuf.writeBytes(respBytes);
             ctx.writeAndFlush(respBuf);*/
             message m = (message)msg;
-            //LogUtils.log.info(m.str + " : " +m.name);
             LogUtils.log.info(m.p.name);
         }
     }
