@@ -3,15 +3,12 @@ package com.kiko.netty.impl.client;
 import com.kiko.demo.handler.ClientHandler;
 import com.kiko.netty.NetUnit;
 import com.kiko.netty.impl.HandlersInitializer;
-import com.kiko.netty.impl.NetUnitOption;
 import com.kiko.tools.LogUtils;
 import io.netty.channel.ChannelFuture;
-import io.netty.channel.ChannelHandlerAdapter;
 import io.netty.channel.ChannelOption;
 import io.netty.channel.EventLoopGroup;
 import io.netty.channel.nio.NioEventLoopGroup;
 
-import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 
@@ -65,10 +62,6 @@ public class TcpClientUnit extends NetUnit{
             };
             executor.execute(reChatTask);
         }
-    }
-
-    @Override
-    public void setOption(NetUnitOption option) {
     }
 
     public static void main(String[] args) {

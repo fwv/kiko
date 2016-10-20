@@ -10,12 +10,4 @@ public abstract class Module {
 
     protected ModuleType type;
 
-    public AbstractModuleManager leaderModuleManager;
-
-    public Module(AbstractModuleManager owner) {
-        this.leaderModuleManager = owner;
-    }
-
-    public abstract void init();
-
 }
