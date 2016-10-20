@@ -1,20 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="2c0caa03-535a-4e30-9335-34162be301b1" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/dictionaries/Administrator.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/kiko/demo/tcp/tcpClient.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/kiko/demo/tcp/tcpServer.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/kiko/net/tcp/TcpClient.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/kiko/net/tcp/TcpServer.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/kiko/serialize/SerializeFactory.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/kiko_jar/kiko.jar" afterPath="$PROJECT_DIR$/out/artifacts/kiko_jar/kiko.jar" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/kiko/demo/handler/ClientHandler.class" afterPath="$PROJECT_DIR$/target/classes/com/kiko/demo/handler/ClientHandler.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/kiko/demo/handler/ServerHandler.class" afterPath="$PROJECT_DIR$/target/classes/com/kiko/demo/handler/ServerHandler.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/kiko/demo/handler/ClientHandler.java" afterPath="$PROJECT_DIR$/src/main/java/com/kiko/demo/handler/ClientHandler.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/kiko/demo/handler/ServerHandler.java" afterPath="$PROJECT_DIR$/src/main/java/com/kiko/demo/handler/ServerHandler.java" />
-    </list>
+    <list default="true" id="2c0caa03-535a-4e30-9335-34162be301b1" name="Default" comment="" />
     <ignored path="kiko.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path="$PROJECT_DIR$/out/" />
@@ -1296,12 +1283,12 @@
       <workItem from="1476778549841" duration="164000" />
       <workItem from="1476778731102" duration="122000" />
       <workItem from="1476778866051" duration="2407000" />
-      <workItem from="1476782393339" duration="11250000" />
+      <workItem from="1476782393339" duration="11623000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="268377000" />
+    <option name="totallyTimeSpent" value="268750000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
