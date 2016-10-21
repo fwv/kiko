@@ -1,6 +1,7 @@
 package com.kiko.protocol;
 
 import com.kiko.netty.impl.HandlersInitializer;
+import com.kiko.protocol.jboss.MarshallingProtocol;
 import com.kiko.protocol.protobuf.ProtobufProtocol;
 import com.kiko.protocol.serializable.SerializableProtocol;
 
@@ -27,7 +28,7 @@ public class SerializeFactory {
                 return new ProtobufProtocol();
 
             case JBOSS:
-                return null;
+                return new MarshallingProtocol();
 
             default:
                 return null;

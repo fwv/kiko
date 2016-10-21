@@ -14,7 +14,12 @@ public class tcpServer {
 
     public static void main(String[] args) {
         //serializableServer();
-        protobufServer();
+        //protobufServer();
+        TcpServer server = new TcpServer();
+        HandlersInitializer handlersInitializer = SerializeFactory.applyProtocol(SerializeFactory.SerializeType.JBOSS);
+        handlersInitializer.addLastHandler(new ServerHandler());
+        server.applyprotocol(handlersInitializer);
+        server.start(9999);
     }
 
     /**
@@ -25,7 +30,7 @@ public class tcpServer {
         HandlersInitializer handlersInitializer = SerializeFactory.applyProtocol(SerializeFactory.SerializeType.PROTOBUF);
         handlersInitializer.addLastHandler(new ProtobufServerHandler());
         server.applyprotocol(handlersInitializer);
-        server.start(6000);
+        server.start(9999);
     }
 
     /**
@@ -36,6 +41,6 @@ public class tcpServer {
         HandlersInitializer handlersInitializer = SerializeFactory.applyProtocol(SerializeFactory.SerializeType.SERIALIZABLE);
         handlersInitializer.addLastHandler(new ServerHandler());
         server.applyprotocol(handlersInitializer);
-        server.start(6000);
+        server.start(9999);
     }
 }

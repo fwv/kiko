@@ -13,7 +13,6 @@ public class RpcResponse extends AbstractRpcEvent{
 
     private Exception exception;
 
-
     public String getResult() { return result; }
 
     public void setResult(String result) {

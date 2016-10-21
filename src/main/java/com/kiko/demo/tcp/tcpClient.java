@@ -13,7 +13,12 @@ import com.kiko.protocol.SerializeFactory;
 public class tcpClient {
     public static void main(String[] args) {
         //serializableClient();
-        protobufClient();
+        //protobufClient();
+        TcpClient client = new TcpClient();
+        HandlersInitializer handlersInitializer = SerializeFactory.applyProtocol(SerializeFactory.SerializeType.JBOSS);
+        handlersInitializer.addLastHandler(new ClientHandler());
+        client.applyProtocol(handlersInitializer);
+        client.connect("127.0.0.1", 9999);
     }
 
     /**
@@ -24,7 +29,7 @@ public class tcpClient {
         HandlersInitializer handlersInitializer = SerializeFactory.applyProtocol(SerializeFactory.SerializeType.PROTOBUF);
         handlersInitializer.addLastHandler(new ProtobufClientHandler());
         client.applyProtocol(handlersInitializer);
-        client.connect("127.0.0.1", 6000);
+        client.connect("127.0.0.1", 9999);
     }
 
     /**
@@ -35,6 +40,6 @@ public class tcpClient {
         HandlersInitializer handlersInitializer = SerializeFactory.applyProtocol(SerializeFactory.SerializeType.SERIALIZABLE);
         handlersInitializer.addLastHandler(new ClientHandler());
         client.applyProtocol(handlersInitializer);
-        client.connect("127.0.0.1", 6000);
+        client.connect("127.0.0.1", 9999);
     }
 }
